@@ -1,7 +1,8 @@
 // import user model
 const { User } = require('../models');
 // import sign token function from auth
-const { signToken, AuthenticationError } = require('../utils/auth');
+const { signToken } = require('../utils/auth');
+const { AuthenticationError } = require("apollo-server-express");
 
 const resolvers = {
   Query: {
@@ -11,16 +12,16 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-    // users: async () => {
-    //   return User.find()
-    //     .select('-__v -password')
-    //     .populate('books');
-    // },
-    // user: async (parent, { username }) => {
-    //   return User.findOne({ username })
-    //     .select('-__v -password')
-    //     .populate('books');
-    // },
+    users: async () => {
+      return User.find()
+        .select('-__v -password')
+        .populate('books');
+    },
+    user: async (parent, { username }) => {
+      return User.findOne({ username })
+        .select('-__v -password')
+        .populate('books');
+    },
   },
 
   Mutation: {
