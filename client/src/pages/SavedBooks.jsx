@@ -16,7 +16,7 @@ import { removeBookId } from '../utils/localStorage';
 const SavedBooks = () => {
   // const [userData, setUserData] = useState({});
   const [removeBook, { error }] = useMutation(REMOVE_BOOK);
-  const { data, loading } = useQuery(QUERY_ME);
+  const { data, loading, refetch } = useQuery(QUERY_ME);
   let userData = data?.me || {};
   console.log(userData);
 
@@ -57,11 +57,12 @@ const SavedBooks = () => {
     }
 
     try {
-      const { user } = await removeBook({
+      await removeBook({
         variables: { bookId: bookId }
       })
       // upon success, remove book's id from localStorage
-      userData = user;
+      const { data } = await refetch();
+      userData = data.me;
       removeBookId(bookId);
     } catch (err) {
       console.error(err);
