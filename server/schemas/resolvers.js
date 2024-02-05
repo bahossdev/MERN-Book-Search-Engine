@@ -45,23 +45,27 @@ const resolvers = {
 
       return { token, user };
     },
-    saveBook: async (parent, { data }, context) => {
+    saveBook: async (parent, { bookInput }, context) => {
+      console.log('bookInput: ', bookInput);
+      // console.log(context.user);
       if (context.user) {
-        return User.findOneAndUpdate(
-          { _id: context.user_id },
-          { $addToSet: { savedBooks: data } },
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $push: { savedBooks: bookInput } },
           { new: true, runValidators: true }
-        );
-      }
+          );
+          return updatedUser;
+        }
       throw AuthenticationError;
     },
     removeBook: async (parent, { bookId }, context) => {
       if (context.user) {
-        return User.findOneAndUpdate(
-          { _id: context.user_id },
-          { $pull: { savedBooks: { bookId } } },
+        const updatedUser = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { savedBooks: { bookId: bookId } } },
           { new: true }
         );
+        return updatedUser;
       }
       throw AuthenticationError;
     }
