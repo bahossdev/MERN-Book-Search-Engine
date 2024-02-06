@@ -17,6 +17,7 @@ This application allows users to search for books using the Google Books API. Us
 - [Description](#description)
 - [Features](#features)
 - [Installation](#installation)
+- [How to Use](#how-to-use)
 - [Technologies Used](#technologies-used)
 - [Credits](#credits)
 - [License](#license)
@@ -71,7 +72,7 @@ Please refer to the license in the repository for detailed information on the li
 
 ## Deployment
 
-The application is deployed on Render. You can access it [here](https://mern-book-search-engine-utjz.onrender.com/).
+The application is deployed on Render. You can access it via this [link](https://mern-book-search-engine-utjz.onrender.com/).
 
 ## Repository
 
