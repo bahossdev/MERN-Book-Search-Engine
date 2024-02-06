@@ -23,7 +23,7 @@ This application allows users to search for books using the Google Books API. Us
 - [License](#license)
 - [Deployment](#deployment)
 - [Questions](#questions)
-- [Screenshots](#screenshots)
+- [Screenshot](#screenshot)
 
 ## Features
 
@@ -82,5 +82,6 @@ The application is deployed on Render. You can access it via this [link](https:/
 
 If you have any questions or need further assistance, feel free to reach out to me by [email](mailto:bahoss.dev@gmail.com).
 
-## Screenshots
+## Screenshot
+![screenshot](https://github.com/bahossdev/MERN-Book-Search-Engine/assets/148646212/c212c05c-d544-4723-932f-2519eab1ee92)
 
